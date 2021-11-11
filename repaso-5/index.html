@@ -1,0 +1,153 @@
+<html>
+<head>
+<title> mi proyecto</title>
+
+<link href="estilo.css" rel="stylesheet" type"text/css">  
+<style>
+.matrix {font-size:30px;text-align:center;width:30px;}
+</style>
+</head>
+<body>
+<center>
+<h1>MIS CREACIONES</h1>
+<script>
+var rows=11;var speed=1;var reveal=2;var effectalign="default"
+var w3c=document.getElementById&&!window.opera;;var ie45=document.all&&!window.opera;var ma_tab,matemp,ma_bod,ma_row,x,y,columns,ma_txt,ma_cho;var m_coch=new Array();var m_copo=new Array();window.onload=function(){if(!w3c&&!ie45)return
+var matrix=(w3c)?document.getElementById("matrix"):document.all["matrix"];ma_txt=(w3c)?matrix.firstChild.nodeValue:matrix.innerHTML;ma_txt=" "+ma_txt+" ";columns=ma_txt.length;if(w3c){while(matrix.childNodes.length)matrix.removeChild(matrix.childNodes[0]);ma_tab=document.createElement("table");ma_tab.setAttribute("border",0);ma_tab.setAttribute("align",effectalign);ma_tab.style.backgroundColor="#000000";ma_bod=document.createElement("tbody");for(x=0;x<rows;x++){ma_row=document.createElement("tr");for(y=0;y<columns;y++){matemp=document.createElement("td");matemp.setAttribute("id","Mx"+x+"y"+y);matemp.className="matrix";matemp.appendChild(document.createTextNode(String.fromCharCode(160)));ma_row.appendChild(matemp);}
+ma_bod.appendChild(ma_row);}
+ma_tab.appendChild(ma_bod);matrix.appendChild(ma_tab);}else{ma_tab='<ta'+'ble align="'+effectalign+'" border="0" style="background-color:#000000">';for(var x=0;x<rows;x++){ma_tab+='<t'+'r>';for(var y=0;y<columns;y++){ma_tab+='<t'+'d class="matrix" id="Mx'+x+'y'+y+'">&nbsp;</'+'td>';}
+ma_tab+='</'+'tr>';}
+ma_tab+='</'+'table>';matrix.innerHTML=ma_tab;}
+ma_cho=ma_txt;for(x=0;x<columns;x++){ma_cho+=String.fromCharCode(32+Math.floor(Math.random()*94));m_copo[x]=0;}
+ma_bod=setInterval("mytricks()",speed);}
+function mytricks(){x=0;for(y=0;y<columns;y++){x=x+(m_copo[y]==100);ma_row=m_copo[y]%100;if(ma_row&&m_copo[y]<100){if(ma_row<rows+1){if(w3c){matemp=document.getElementById("Mx"+(ma_row-1)+"y"+y);matemp.firstChild.nodeValue=m_coch[y];}
+else{matemp=document.all["Mx"+(ma_row-1)+"y"+y];matemp.innerHTML=m_coch[y];}
+matemp.style.color="#33ff66";matemp.style.fontWeight="bold";}
+if(ma_row>1&&ma_row<rows+2){matemp=(w3c)?document.getElementById("Mx"+(ma_row-2)+"y"+y):document.all["Mx"+(ma_row-2)+"y"+y];matemp.style.fontWeight="normal";matemp.style.color="#00ff00";}
+if(ma_row>2){matemp=(w3c)?document.getElementById("Mx"+(ma_row-3)+"y"+y):document.all["Mx"+(ma_row-3)+"y"+y];matemp.style.color="#009900";}
+if(ma_row<Math.floor(rows/2)+1)m_copo[y]++;else if(ma_row==Math.floor(rows/2)+1&&m_coch[y]==ma_txt.charAt(y))zoomer(y);else if(ma_row<rows+2)m_copo[y]++;else if(m_copo[y]<100)m_copo[y]=0;}
+else if(Math.random()>0.9&&m_copo[y]<100){m_coch[y]=ma_cho.charAt(Math.floor(Math.random()*ma_cho.length));m_copo[y]++;}}
+if(x==columns)clearInterval(ma_bod);}
+function zoomer(ycol){var mtmp,mtem,ytmp;if(m_copo[ycol]==Math.floor(rows/2)+1){for(ytmp=0;ytmp<rows;ytmp++){if(w3c){mtmp=document.getElementById("Mx"+ytmp+"y"+ycol);mtmp.firstChild.nodeValue=m_coch[ycol];}
+else{mtmp=document.all["Mx"+ytmp+"y"+ycol];mtmp.innerHTML=m_coch[ycol];}
+mtmp.style.color="#33ff66";mtmp.style.fontWeight="bold";}
+if(Math.random()<reveal){mtmp=ma_cho.indexOf(ma_txt.charAt(ycol));ma_cho=ma_cho.substring(0,mtmp)+ma_cho.substring(mtmp+1,ma_cho.length);}
+if(Math.random()<reveal-1)ma_cho=ma_cho.substring(0,ma_cho.length-1);m_copo[ycol]+=199;setTimeout("zoomer("+ycol+")",speed);}
+else if(m_copo[ycol]>200){if(w3c){mtmp=document.getElementById("Mx"+(m_copo[ycol]-201)+"y"+ycol);mtem=document.getElementById("Mx"+(200+rows-m_copo[ycol]--)+"y"+ycol);}
+else{mtmp=document.all["Mx"+(m_copo[ycol]-201)+"y"+ycol];mtem=document.all["Mx"+(200+rows-m_copo[ycol]--)+"y"+ycol];}
+mtmp.style.fontWeight="normal";mtem.style.fontWeight="normal";setTimeout("zoomer("+ycol+")",speed);}
+else if(m_copo[ycol]==200)m_copo[ycol]=100+Math.floor(rows/2);if(m_copo[ycol]>100&&m_copo[ycol]<200){if(w3c){mtmp=document.getElementById("Mx"+(m_copo[ycol]-101)+"y"+ycol);mtmp.firstChild.nodeValue=String.fromCharCode(160);mtem=document.getElementById("Mx"+(100+rows-m_copo[ycol]--)+"y"+ycol);mtem.firstChild.nodeValue=String.fromCharCode(160);}
+else{mtmp=document.all["Mx"+(m_copo[ycol]-101)+"y"+ycol];mtmp.innerHTML=String.fromCharCode(160);mtem=document.all["Mx"+(100+rows-m_copo[ycol]--)+"y"+ycol];mtem.innerHTML=String.fromCharCode(160);}
+setTimeout("zoomer("+ycol+")",speed);}}
+</script>
+<div id="matrix">&nbsp;todo crochet</div>
+
+
+
+
+
+<h1>Calculadora</h1>
+<input type="text" id="arg1" size="1"> X <input type="text" id="arg2" size="1">
+<input type="button" value="Calcular!" onclick="calc()">
+<div id="result"></div>
+<script type="text/javascript">
+function calc(){
+var argOne=document.getElementById('arg1').value;
+var argTwo=document.getElementById('arg2').value;
+var ans=(argOne*argTwo);
+document.getElementById('result').innerHTML=argOne + ' multiplicado ' + argTwo + ' es igual a ' + ans;
+}
+</script>
+
+
+
+
+
+<h1>Tejiendo con amor</h1>
+<script>
+var date=new Date();var d=date.getDate();var day=(d<10)?'0'+d:d;var m=date.getMonth()+1;var month=(m<10)?'0'+m:m;var yy=date.getYear();var year=(yy<1000)?yy+1900:yy;document.write(day+"/"+month+"/"+year);
+</script><br>
+<script>
+function makeArray(){for(i=0;i<makeArray.arguments.length;i++)this[i+1]=makeArray.arguments[i]}var months=new makeArray('Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre');var date=new Date();var day=date.getDate();var month=date.getMonth()+1;var yy=date.getYear();var year=(yy<1000)?yy+1900:yy;document.write("Hoy es "+day+ " de "+months[month]+" del "+year);
+</script>
+
+<a href="index.html"> <h6>HOME</h6> </a>
+</head>
+<body>
+<center>
+<h1>  Creaciones Adriana </h1>
+<h3> todo crochet</h3>
+<h6> tejiendo con amor </h6>
+<img src="crochet.jpg" width= "450" heigth="700">
+
+<p> Estoy haciendo un curso de marketing digital en innovacien</p>
+<p></p>
+<p> dictado por el profesor Juan Pablo Montecinos</p>
+ 
+<p></p>
+<p>el cual debe tener mucha paciencia para enseñarnos.</p>
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1uisACfdAYI?start=228" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p>Este curso me ha parecido súper entretenido</p>
+<p></p>
+<p> a veces un poco estresante porque ando bastante perdida</p>
+<p></p>
+<p> pero es tremendamente gratificante saber que le estoy perdiendo el miedo a la tecnología</p>
+<p></p>
+<p> y que soy capaz  de aprender a utilizarla</p>
+
+</p>  <p></p>
+
+<a href="https://www.facebook.com/"target="_blank"> 
+<img src="facebook.jpg" width="50" height="50"></a>
+<p></p>
+
+<a href="https://www.instagram.com/?hl=es">
+<img src="instagram.jpg" width="50" height="50"></a>
+<p></p>
+
+<a href= "https://wa.me/56999472366" target="_blank">
+<img src="wtp.jpg" width="50" height="50"></a>
+<ol>
+<li>Este es el primer elemento</li>
+<li>Este es el segundo elemento</li>
+<li>Este es el tercer elemento</li>
+</ol>
+<ul>
+<li>Este es el primer elemento</li>
+<li>Este es el segundo elemento</li>
+<li>Este es el tercer elemento</li>
+</ul>
+<table border="8">
+<tr>
+<td>  <h1>  Creaciones Adriana </h1>
+</td>
+<td> <img src="crochet.jpg" width= "320" heigth="180"> </td>
+
+<td> 
+<ul>
+<li>exclusivos</li>
+<li>creativos</li>
+<li>pintosos</li>
+</ul> </td>
+</tr>
+<tr>
+<td>  <li> ropa</li> <li> tapates</li> <li> accesorios</li>    </td>
+<td> <iframe width="320" height="180" src="https://www.youtube.com/embed/1uisACfdAYI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+<td> <p> ésto es tejiendo con amor </p>  </td>
+</tr>
+<tr>
+<td> <a href="https://www.facebook.com/"target="_blank"><img src="facebook.jpg" width="50" height="50"></a> </td>
+<td> <a href="https://www.instagram.com/?hl=es" target="_blank"> <img src="instagram.jpg" width="50" height="50"></a> <a href="https://www.facebook.com/"target="_blank">      </td>
+<td><a href= "https://wa.me/56999472366" target="_blank">
+<img src="wtp.jpg" width="50" height="50"></a>    </td>
+</tr>
+</table>
+
+
+
+</center>
+</body>
+</html>
